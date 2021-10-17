@@ -18,11 +18,16 @@
 <div>
     <div class="form-style-6">
         <h1>Аутентификация</h1>
-        <form name="auth" action="/signIn" method="POST">
-            <label>Login: </label>
-            <input type="text" placeholder="Enter your email" name="login" required>
-            <label>Password: </label>
-            <input type="password" name="password" placeholder="Enter your password" required>
+        <form name="auth" action="/j_spring_security_check" method="POST">
+            <label>Login:
+                <input type="text" placeholder="Enter your login" name="username">
+            </label>
+            <label>Password:
+                <input type="password" name="password" placeholder="Enter your password">
+            </label>
+            <label>Remember Me?:
+                <input type="checkbox" name="remember-me">
+            </label>
             <button type="submit">signIn</button>
         </form>
     </div>

@@ -1,5 +1,6 @@
 package com.school21.cinemaspringboot.config;
 
+import com.school21.cinemaspringboot.service.Impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,15 +20,14 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private UserServiceImpl userDetailsService;
 
     @Autowired
     private DataSource dataSource;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        return bCryptPasswordEncoder;
+        return new BCryptPasswordEncoder();
     }
 
     @Autowired
@@ -44,33 +44,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        http.authorizeRequests().antMatchers("/", "/signIn", "/signOut").permitAll();
+        http.authorizeRequests()
+                .antMatchers("/signIn", "/signUp").not().fullyAuthenticated()
+                .antMatchers("/", "/signOut").permitAll()
+                .antMatchers("/profile", "/sessions/**", "/films/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").access("hasRole('ADMIN')");
 
-        http.authorizeRequests().antMatchers("/profile").access("hasAnyRole('USER', 'ADMIN')");
-
-        http.authorizeRequests().antMatchers("/session/**").access("hasAnyRole('USER', 'ADMIN')");
-
-        http.authorizeRequests().antMatchers("/films/**").access("hasAnyRole('USER', 'ADMIN')");
-
-        // For ADMIN only.
-        http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')");
-
-        // When the user has logged in as XX.
-        // But access a page that requires role YY,
-        // AccessDeniedException will be thrown.
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+//        // When the user has logged in as XX.
+//        // But access a page that requires role YY,
+//        // AccessDeniedException will be thrown.
+//        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
         // Config for Login Form
         http.authorizeRequests().and().formLogin()//
                 // Submit URL of login page.
-                .loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .loginPage("/signIn")//
+                .loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .defaultSuccessUrl("/profile")//
-                .failureUrl("/login?error=true")//
+                .failureUrl("/signIn?error=true")//
                 .usernameParameter("username")//
                 .passwordParameter("password")
                 // Config for Logout Page
-                .and().logout().logoutUrl("/signOut").logoutSuccessUrl("/profile");
+                .and().logout().logoutUrl("/signOut").invalidateHttpSession(true).logoutSuccessUrl("/signIn");
 
         // Config Remember Me.
         http.authorizeRequests().and() //
