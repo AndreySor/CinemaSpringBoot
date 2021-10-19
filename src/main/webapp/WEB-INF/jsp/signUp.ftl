@@ -25,6 +25,7 @@
             <label>Password:
                 <input type="password" name="password" placeholder="Enter your password" required>
             </label>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="submit"  value="SignUp"/>
         </form>
     </div>

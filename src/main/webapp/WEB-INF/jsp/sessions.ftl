@@ -51,6 +51,7 @@
         </select>
         <input name="ticketCost" type="number" value="0" required>
         <input name="sessionDate" type="datetime-local" required>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" name="submit" value="Submit">
     </form>
 </div>

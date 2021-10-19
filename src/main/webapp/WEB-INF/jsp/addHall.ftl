@@ -17,6 +17,7 @@
         <form name="hall" action="/admin/panel/saveNewHall" method="POST">
             Serial Number: <input type="number" name="serialNumber" /><br/>
             Seats Number:  <input type="number" name="seatsNumber" /><br/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="submit" value="Create"/>
             <input type="button" value="Exit"
                    onclick="window.location.href = '/admin/panel/halls'"/>

@@ -30,6 +30,7 @@
                     <td>${film.description}</td>
                     <td>${film.poster}</td>
                     <td><input type="hidden" value="${film.title}" name="title"></td>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <td><input type="submit" value="Add Poster"/></td>
                 </tr>
             </form>

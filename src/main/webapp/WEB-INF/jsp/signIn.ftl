@@ -28,6 +28,7 @@
             <label>Remember Me?:
                 <input type="checkbox" name="remember-me">
             </label>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button type="submit">signIn</button>
         </form>
     </div>
