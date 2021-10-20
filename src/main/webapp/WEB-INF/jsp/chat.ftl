@@ -1,5 +1,7 @@
 <html>
 <head>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <style>
         <#setting classic_compatible=true>
         <#include "css/chat.css">
@@ -66,6 +68,13 @@
     let chatFilmId = '${film.filmId}';
     let stompClient = null;
     let username = null;
+
+    const token = $("meta[name='_csrf']").attr("content");
+    const header = $("meta[name='_csrf_header']").attr("content");
+
+    $(document).ajaxSend(function(e, xhr, options) {
+        xhr.setRequestHeader(header, token);
+    });
 
     let colors = [
         '#2196F3', '#32c787', '#00BCD4', '#ff5652',
