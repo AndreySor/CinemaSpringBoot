@@ -19,6 +19,6 @@ public class HallServiceImpl implements HallService {
 
     @Override
     public List<Hall> getAll() {
-        return hallRepository.getAll();
+        return hallRepository.findAll();
     }
 }

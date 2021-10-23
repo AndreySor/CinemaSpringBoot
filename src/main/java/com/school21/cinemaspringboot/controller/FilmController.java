@@ -30,7 +30,7 @@ public class FilmController {
 
     @RequestMapping(value = "/admin/panel/films", method = RequestMethod.GET)
     public String showAllFilm(Model model) {
-        List<Film> films = filmRepository.getAll();
+        List<Film> films = filmRepository.findAll();
         model.addAttribute("films", films);
         return "films";
     }

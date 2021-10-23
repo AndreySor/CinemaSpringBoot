@@ -19,13 +19,13 @@ public class HallController {
     private final HallRepository hallRepository;
 
     @Autowired
-    public HallController(@Qualifier("hallRepositoryImpl") HallRepository hallRepository) {
+    public HallController(HallRepository hallRepository) {
         this.hallRepository = hallRepository;
     }
 
     @RequestMapping(value = "/admin/panel/halls", method = RequestMethod.GET)
     public String showAllHals(Model model) {
-        List<Hall> halls = hallRepository.getAll();
+        List<Hall> halls = hallRepository.findAll();
         model.addAttribute("halls", halls);
 
         return "halls";
@@ -43,7 +43,7 @@ public class HallController {
         if (hall == null || hall.getSerialNumber() == null || hall.getSeatsNumber() == null) {
             model.addAttribute("errorMessage", "Please enter all data");
             return "addHall";
-        } else if (hallRepository.getFromSerialNumber(hall.getSerialNumber()) != null) {
+        } else if (hallRepository.findBySerialNumber(hall.getSerialNumber()) != null) {
             model.addAttribute("errorMessage", "A hall with this number already exists");
             return "addHall";
         } else {

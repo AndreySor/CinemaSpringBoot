@@ -1,5 +1,7 @@
 package com.school21.cinemaspringboot.config;
 
+import com.school21.cinemaspringboot.filter.RedirectPageFilter;
+import com.school21.cinemaspringboot.security.RedirectUrlAuthenticationSuccessHandler;
 import com.school21.cinemaspringboot.service.Impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,8 +11,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.sql.DataSource;
 
@@ -24,6 +29,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    AuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Autowired
+    GenericFilterBean redirectPageFilter;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -42,10 +53,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable();
+//        http.csrf().disable();
 
-        http.authorizeRequests()
-                .antMatchers("/signIn", "/signUp").not().fullyAuthenticated()
+        http
+                .addFilterAfter(redirectPageFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
+                .antMatchers("/signIn", "/signUp").permitAll()
                 .antMatchers("/", "/signOut").permitAll()
                 .antMatchers("/profile", "/sessions/**", "/films/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')");
@@ -60,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Submit URL of login page.
                 .loginPage("/signIn")//
                 .loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .defaultSuccessUrl("/profile")//
+                .successHandler(customAuthenticationSuccessHandler)//
                 .failureUrl("/signIn?error=true")//
                 .usernameParameter("username")//
                 .passwordParameter("password")

@@ -27,6 +27,10 @@ CREATE TABLE IF NOT EXISTS cinema_sessions
 CREATE TABLE IF NOT EXISTS users
 (
     id    BIGSERIAL PRIMARY KEY,
+    first_name VARCHAR(64),
+    last_name VARCHAR(64),
+    email VARCHAR(64),
+    phone VARCHAR(64),
     login VARCHAR(64) UNIQUE NOT NULL,
     password TEXT NOT NULL,
     user_role VARCHAR(64) NOT NULL
@@ -47,4 +51,11 @@ CREATE TABLE IF NOT EXISTS cinema_messages
     author_id BIGSERIAL REFERENCES users (id),
     message_date TIMESTAMP WITHOUT TIME ZONE,
     film_id BIGSERIAL REFERENCES cinema_films (film_id)
+);
+
+CREATE TABLE IF NOT EXISTS persistent_logins (
+    username varchar(100) not null,
+    series varchar(64) primary key,
+    token varchar(64) not null,
+    last_used timestamp not null
 );

@@ -47,8 +47,6 @@ public class AuthController {
 
     @PostMapping(value = "/signUp")
     public String addUser(Model model, @ModelAttribute("user") User user) {
-//        String tr = principal.getName();
-//        User user = (User) model.getAttribute("user");
         if (user == null || user.getLogin() == null || user.getPassword() == null) {
             model.addAttribute("errorMessage", "Введите обязательные данные");
             return "signUp";

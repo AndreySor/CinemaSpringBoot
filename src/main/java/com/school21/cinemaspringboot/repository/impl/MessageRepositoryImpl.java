@@ -26,7 +26,7 @@ public class MessageRepositoryImpl implements MessageRepository {
     @Override
     @Transactional
     public List<Message> getLastTwelveMessagesFromFilmId(Long filmId) {
-       return entityManager.createQuery("FROM Message WHERE film.filmId =:filmId ORDER BY film.filmId DESC", Message.class).setParameter("filmId", filmId).setMaxResults(20).getResultList();
+       return entityManager.createQuery("FROM Message WHERE film.filmId =:filmId ORDER BY film.filmId ASC", Message.class).setParameter("filmId", filmId).setMaxResults(20).getResultList();
     }
 
     @Override

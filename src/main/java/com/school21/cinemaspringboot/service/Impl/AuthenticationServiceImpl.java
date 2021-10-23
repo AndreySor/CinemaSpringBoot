@@ -39,6 +39,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public List<Authentication> getAllByUserId(Long id) {
-        return authenticationRepository.getAllByUserId(id);
+        return authenticationRepository.findAllByUserId(id);
     }
 }

@@ -2,14 +2,13 @@ package com.school21.cinemaspringboot.repository;
 
 
 import com.school21.cinemaspringboot.model.Authentication;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AuthenticationRepository {
+public interface AuthenticationRepository extends JpaRepository<Authentication, Long> {
 
-    List<Authentication> getAll();
     Authentication get(Long id);
-    Authentication save(Authentication authentication);
-    Long getCountRows();
-    List<Authentication> getAllByUserId(Long id);
+
+    List<Authentication> findAllByUserId(Long id);
 }

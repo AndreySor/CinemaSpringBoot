@@ -37,7 +37,7 @@ public class ChatController {
 
     @GetMapping(value = "/films/{film-id}/chat")
     public String startChat(@PathVariable("film-id") Long filmId, Model model) {
-        Film film = filmRepository.get(filmId);
+        Film film = filmRepository.findById(filmId).get();
         List<Message> lastMessages = messageService.getLastTwelveMessagesFromFilmId(filmId);
         model.addAttribute("film", film);
         model.addAttribute("history", lastMessages);
