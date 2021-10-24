@@ -25,15 +25,14 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public List<Session> getAll() {
-        return sessionRepository.getAll();
+        return sessionRepository.findAll();
     }
 
     @Override
     public Session get(Long id) {
-        return sessionRepository.get(id);
+        return sessionRepository.findById(id).get();
     }
 
-    //функционал для ex01
     @Override
     public List<Session> searchByRequest(String request) {
         return sessionRepository.searchByRequest(request);

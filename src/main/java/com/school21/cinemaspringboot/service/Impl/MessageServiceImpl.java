@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class MessageServiceImpl implements MessageService {
 
-    private MessageRepository messageRepository;
+    private final MessageRepository messageRepository;
 
     public MessageServiceImpl(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;

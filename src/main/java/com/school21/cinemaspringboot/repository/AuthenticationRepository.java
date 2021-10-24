@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface AuthenticationRepository extends JpaRepository<Authentication, Long> {
 
-    Authentication get(Long id);
-
     List<Authentication> findAllByUserId(Long id);
 }
