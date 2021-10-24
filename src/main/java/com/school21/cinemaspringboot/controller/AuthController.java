@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.security.Principal;
-import java.util.List;
-
 @Controller
 public class AuthController {
 
@@ -47,17 +44,13 @@ public class AuthController {
 
     @PostMapping(value = "/signUp")
     public String addUser(Model model, @ModelAttribute("user") User user) {
-        if (user == null || user.getLogin() == null || user.getPassword() == null) {
-            model.addAttribute("errorMessage", "Введите обязательные данные");
-            return "signUp";
-        }
-        User user1 = userRepository.findByLogin(user.getLogin());
-        if (user1 != null) {
-            model.addAttribute("errorMessage", "Пользователь уже существует");
-            return "signUp";
-        }
 
-        userService.saveUser(user);
+        try {
+            userService.saveUser(user);
+        } catch (RuntimeException ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "signUp";
+        }
 
         return "signIn";
     }

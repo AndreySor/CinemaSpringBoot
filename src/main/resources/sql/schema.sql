@@ -27,10 +27,10 @@ CREATE TABLE IF NOT EXISTS cinema_sessions
 CREATE TABLE IF NOT EXISTS users
 (
     id    BIGSERIAL PRIMARY KEY,
-    first_name VARCHAR(64),
-    last_name VARCHAR(64),
-    email VARCHAR(64),
-    phone VARCHAR(64),
+    first_name VARCHAR(64) NOT NULL,
+    last_name VARCHAR(64) NOT NULL,
+    email VARCHAR(64) NOT NULL,
+    phone VARCHAR(64) NOT NULL,
     login VARCHAR(64) UNIQUE NOT NULL,
     password TEXT NOT NULL,
     user_role VARCHAR(64) NOT NULL

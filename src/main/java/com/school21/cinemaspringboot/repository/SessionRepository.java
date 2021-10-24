@@ -8,10 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SessionRepository extends JpaRepository<Session, Long> {
+public interface SessionRepository extends JpaRepository<Session, Long>, SessionRepositoryPart {
 
-    @Query("SELECT new Session(s.id, s.ticketCost, s.date, f) " +
-            "FROM Session s JOIN Film f ON s.film.filmId = f.filmId " +
-            "WHERE f.title LIKE :request")
-    List<Session> searchByRequest(@Param("request") String request);
 }

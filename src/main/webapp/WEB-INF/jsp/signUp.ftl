@@ -20,6 +20,18 @@
         <h1>Регистрация</h1>
         <form name="user" action="/signUp" method="POST">
             <label>Login:
+                <input type="text" placeholder="Enter your firstname" name="firstName" required>
+            </label>
+            <label>Login:
+                <input type="text" placeholder="Enter your lastname" name="lastName" required>
+            </label>
+            <label>Login:
+                <input type="email" placeholder="Enter your email" name="email" required>
+            </label>
+            <label>Login:
+                <input type="text" placeholder="Enter your phone" name="phone" required>
+            </label>
+            <label>Login:
                 <input type="text" placeholder="Enter your login" name="login" required>
             </label>
             <label>Password:

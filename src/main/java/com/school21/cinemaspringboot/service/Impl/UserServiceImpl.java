@@ -1,5 +1,7 @@
 package com.school21.cinemaspringboot.service.Impl;
 
+import com.school21.cinemaspringboot.exception.NotAllDataException;
+import com.school21.cinemaspringboot.exception.ObjectAlreadyExistsException;
 import com.school21.cinemaspringboot.model.Role;
 import com.school21.cinemaspringboot.model.User;
 import com.school21.cinemaspringboot.repository.UserRepository;
@@ -43,6 +45,14 @@ public class UserServiceImpl implements UserDetailsService {
     }
 
     public void saveUser(User user) {
+        if (user == null || user.getLogin() == null
+                || user.getPassword() == null || user.getFirstName() == null
+                || user.getLastName() == null || user.getEmail() == null || user.getPhone() == null) {
+            throw new NotAllDataException("Please enter all data");
+        }
+        if (userRepository.findByLogin(user.getLogin()) != null) {
+            throw new ObjectAlreadyExistsException("A user with this login already exists");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
         userRepository.save(user);
