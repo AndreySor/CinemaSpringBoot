@@ -4,9 +4,11 @@ import com.school21.cinemaspringboot.model.SecureToken;
 import com.school21.cinemaspringboot.repository.SecureTokenRepository;
 import com.school21.cinemaspringboot.service.SecureTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 public class SecureTokenServiceImpl implements SecureTokenService {
 
     @Autowired

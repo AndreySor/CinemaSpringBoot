@@ -38,9 +38,6 @@ public class User {
     @Column(name = "is_confirmed")
     private Boolean isConfirmed;
 
-    @OneToMany(mappedBy = "user")
-    private Set<SecureToken> secureTokens;
-
     public User() {
     }
 

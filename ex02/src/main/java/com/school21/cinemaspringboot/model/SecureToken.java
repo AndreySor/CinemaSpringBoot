@@ -14,7 +14,7 @@ public class SecureToken {
     @Column(unique = true, name = "token")
     private String token;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName ="id")
     private User user;
 

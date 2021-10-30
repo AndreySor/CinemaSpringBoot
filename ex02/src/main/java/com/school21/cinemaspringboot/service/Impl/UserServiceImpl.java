@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserDetailsService {
                 .build();
     }
 
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         if (user == null || user.getLogin() == null
                 || user.getPassword() == null || user.getFirstName() == null
                 || user.getLastName() == null || user.getEmail() == null || user.getPhone() == null) {
@@ -59,6 +59,6 @@ public class UserServiceImpl implements UserDetailsService {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 }
