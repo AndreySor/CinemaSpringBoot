@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AuthController {
 
-    private final UserRepository userRepository;
     private final UserServiceImpl userService;
     private final EmailServiceImpl emailService;
     private final SecureTokenService secureTokenService;
 
-    public AuthController(UserRepository userRepository, UserServiceImpl userService, EmailServiceImpl emailService, SecureTokenService secureTokenService) {
-        this.userRepository = userRepository;
+    public AuthController(UserServiceImpl userService, EmailServiceImpl emailService, SecureTokenService secureTokenService) {
         this.userService = userService;
         this.emailService = emailService;
         this.secureTokenService = secureTokenService;
@@ -68,19 +66,18 @@ public class AuthController {
     }
 
     @GetMapping(value = "/confirm/{token}")
-    public String confirm(@PathVariable("token") String token) {
+    public String confirm(Model model, @PathVariable("token") String token) {
 
         if (token.isEmpty()) {
-
+            model.addAttribute("errorMessage", "The link is invalid or broken!");
             return "signUp";
         }
          SecureToken secureToken = secureTokenService.findByToken(token);
 
         if (secureToken == null) {
-
+            model.addAttribute("errorMessage", "The link is invalid or broken!");
             return "signUp";
         }
-
         User user = secureToken.getUser();
         user.setConfirmed(true);
         userService.saveUser(user);
