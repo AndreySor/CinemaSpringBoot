@@ -11,7 +11,7 @@
     <groupId>com.school21</groupId>
     <artifactId>CinemaSpringBoot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>CinemaSpringBoot</name>
+    <name>CinemaSpringBoot(ex00)</name>
     <description>CinemaSpringBoot</description>
     <properties>
         <java.version>1.8</java.version>

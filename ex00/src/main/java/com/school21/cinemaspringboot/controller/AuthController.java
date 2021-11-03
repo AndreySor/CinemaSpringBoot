@@ -20,9 +20,8 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/signIn")
+    @GetMapping("/signIn")
     public String signIn(Model model) {
-
         User user = new User();
         model.addAttribute("user", user);
         return "signIn";
@@ -30,7 +29,6 @@ public class AuthController {
 
     @GetMapping(value = "/profile")
     public String getProfile(Model model) {
-
         return "profile";
     }
 

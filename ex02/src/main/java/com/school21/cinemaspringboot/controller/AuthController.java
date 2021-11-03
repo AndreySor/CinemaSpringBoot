@@ -27,9 +27,8 @@ public class AuthController {
         this.secureTokenService = secureTokenService;
     }
 
-    @GetMapping(value = "/signIn")
+    @GetMapping("/signIn")
     public String signIn(Model model) {
-
         User user = new User();
         model.addAttribute("user", user);
         return "signIn";

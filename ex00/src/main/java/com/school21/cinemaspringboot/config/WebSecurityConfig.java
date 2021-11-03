@@ -1,7 +1,5 @@
 package com.school21.cinemaspringboot.config;
 
-import com.school21.cinemaspringboot.filter.RedirectPageFilter;
-import com.school21.cinemaspringboot.security.RedirectUrlAuthenticationSuccessHandler;
 import com.school21.cinemaspringboot.service.Impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +16,6 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.sql.DataSource;
-
 
 @Configuration
 @EnableWebSecurity

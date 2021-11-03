@@ -249,3 +249,23 @@ button.accent {
         font-size: 1.1em;
     }
 }
+
+.user-info {
+    margin-right: 5%;
+    margin-left: 5%;
+    width: 90%;
+    height: 300px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.auth {
+    overflow:scroll;
+    height: 300px;
+    flex-grow: 5;
+}
+
+.avatar {
+    height: 300px;
+    flex-grow: 5;
+}
