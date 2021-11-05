@@ -15,7 +15,8 @@ let colors = [
 ];
 $(document).ready(function () {
     chatFilmId = $("#htmlFilmId").val();
-    document.getElementById("formFilmId").value=('${film.filmId}');
+    console.log(chatFilmId);
+    document.getElementById("formFilmId").value=(chatFilmId);
     username = getCookie("login");
     let socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
