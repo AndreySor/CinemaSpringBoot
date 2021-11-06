@@ -291,3 +291,10 @@ html, body {
   border: 1px solid black;
   text-align: center;
 }
+
+.error {
+  color: red;
+  font-family: serif;
+  position: center;
+  top: 5px;
+}

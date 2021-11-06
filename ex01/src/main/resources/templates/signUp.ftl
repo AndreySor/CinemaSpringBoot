@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring/>
-
 <html>
 <head>
     <style>
@@ -25,22 +24,46 @@
         <h1><@spring.message code="signup.formname"/></h1>
         <form name="user" action="/signUp" method="POST">
             <label><@spring.message code="signup.firstname"/>:
-                <input type="text" placeholder="<@spring.message code="signup.firstname.placeholder"/>" name="firstName" required>
+                <#assign fNamePl><@spring.message code="signup.firstname.placeholder"/></#assign>
+                <@spring.formInput "user.firstName" "placeholder=${fNamePl}"/>
+                <@spring.showErrors "<br>" "error"/>
+                <br>
+                <br>
             </label>
             <label><@spring.message code="signup.lastname"/>:
-                <input type="text" placeholder="<@spring.message code="signup.lastname.placeholder"/>" name="lastName" required>
+                <#assign lNamePl><@spring.message code="signup.lastname.placeholder"/></#assign>
+                <@spring.formInput "user.lastName" "placeholder=${lNamePl}"/>
+                <@spring.showErrors "<br>" "error"/>
+                <br>
+                <br>
             </label>
             <label><@spring.message code="signup.email"/>:
-                <input type="email" placeholder="<@spring.message code="signup.email.placeholder"/>" name="email" required>
+                <#assign emailPl><@spring.message code="signup.email.placeholder"/></#assign>
+                <@spring.formInput "user.email" "placeholder=${emailPl}"/>
+                <@spring.showErrors "<br>" "error"/>
+                <br>
+                <br>
             </label>
             <label><@spring.message code="signup.phone"/>:
-                <input type="text" placeholder="<@spring.message code="signup.phone.placeholder"/>" name="phone" required>
+                <#assign phonePl><@spring.message code="signup.phone.placeholder"/></#assign>
+                <@spring.formInput "user.phone" "placeholder=${phonePl}"/>
+                <@spring.showErrors "<br>" "error"/>
+                <br>
+                <br>
             </label>
             <label><@spring.message code="signup.login"/>:
-                <input type="text" placeholder="<@spring.message code="signup.login.placeholder"/>" name="login" required>
+                <#assign loginPl><@spring.message code="signup.login.placeholder"/></#assign>
+                <@spring.formInput "user.login" "placeholder=${loginPl}"/>
+                <@spring.showErrors "<br>" "error"/>
+                <br>
+                <br>
             </label>
             <label><@spring.message code="signup.password"/>:
-                <input type="password" name="password" placeholder="<@spring.message code="signup.password.placeholder"/>" required>
+                <#assign passPl><@spring.message code="signup.password.placeholder"/></#assign>
+                <@spring.formPasswordInput "user.password" "placeholder=${passPl}"/>
+                <@spring.showErrors "<br>" "error"/>
+                <br>
+                <br>
             </label>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <input type="submit"  value="<@spring.message code="signup.button"/>"/>

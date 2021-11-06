@@ -5,9 +5,11 @@ import com.school21.cinemaspringboot.repository.UserRepository;
 import com.school21.cinemaspringboot.service.Impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class AuthController {
@@ -41,7 +43,11 @@ public class AuthController {
     }
 
     @PostMapping(value = "/signUp")
-    public String addUser(Model model, @ModelAttribute("user") User user) {
+    public String addUser(Model model, @Valid User user, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "signUp";
+        }
 
         try {
             userService.saveUser(user);
