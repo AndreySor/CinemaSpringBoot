@@ -1,10 +1,8 @@
 package com.school21.cinemaspringboot.service.Impl;
 
-
 import com.school21.cinemaspringboot.model.Session;
 import com.school21.cinemaspringboot.repository.SessionRepository;
 import com.school21.cinemaspringboot.service.SessionService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

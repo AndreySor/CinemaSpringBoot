@@ -1,9 +1,12 @@
 package com.school21.cinemaspringboot.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cinema_films")
+@Data
 public class Film {
 
     @Id
@@ -34,54 +37,6 @@ public class Film {
         this.releaseYear = releaseYear;
         this.ageRestriction = ageRestriction;
         this.description = description;
-        this.poster = poster;
-    }
-
-    public Long getFilmId() {
-        return filmId;
-    }
-
-    public void setFilmId(Long filmId) {
-        this.filmId = filmId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getReleaseYear() {
-        return releaseYear;
-    }
-
-    public void setReleaseYear(Integer releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public Integer getAgeRestriction() {
-        return ageRestriction;
-    }
-
-    public void setAgeRestriction(Integer ageRestriction) {
-        this.ageRestriction = ageRestriction;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
         this.poster = poster;
     }
 

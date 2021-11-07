@@ -2,6 +2,8 @@
 
 <html>
 <head>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <style>
         <#setting classic_compatible=true>
         <#include "css/chat.css">
@@ -41,7 +43,7 @@
             <h3>Users authentications</h3>
         </div>
         <div class="avatar">
-            <div id="userAvatars">
+            <div id="userAvatars" class="avatarsList">
                 <h3>User's avatars</h3>
             </div>
             <form id="avatarForm" enctype="multipart/form-data" method="POST" action="/images">

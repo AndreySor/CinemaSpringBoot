@@ -7,9 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.Arrays;
 
 @Controller
 public class AuthController {
@@ -22,6 +27,11 @@ public class AuthController {
         this.userService = userService;
     }
 
+    @GetMapping("/")
+    public String root() {
+        return "redirect:signIn";
+    }
+
     @GetMapping("/signIn")
     public String signIn(Model model) {
         User user = new User();
@@ -30,8 +40,24 @@ public class AuthController {
     }
 
     @GetMapping(value = "/profile")
-    public String getProfile(Model model) {
+    public String getProfile(Model model, HttpServletRequest request) {
+        String login = Arrays.stream(request.getCookies())
+                .filter(c -> c.getName().equals("login"))
+                .findFirst()
+                .get().getValue();
+        User user = userRepository.findByLogin(login);
+        if (user.getAvatar() != null) {
+            user.setAvatar(userService.getAvatar(user));
+        }
+        model.addAttribute("userInfo", user);
         return "profile";
+    }
+
+    @PostMapping(value = "/avatarUpload", consumes = "multipart/form-data")
+    public String uploadAvatar(@ModelAttribute("avatar") MultipartFile avatar,
+                               @ModelAttribute("userId")Long userId) throws IOException {
+        userService.uploadAvatar(avatar, userId);
+        return "redirect:profile";
     }
 
     @GetMapping(value = "/signUp")

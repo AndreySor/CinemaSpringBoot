@@ -1,6 +1,5 @@
 package com.school21.cinemaspringboot.service.Impl;
 
-
 import com.school21.cinemaspringboot.model.Session;
 import com.school21.cinemaspringboot.repository.SessionRepository;
 import com.school21.cinemaspringboot.service.SessionService;

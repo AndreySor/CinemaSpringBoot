@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>${info.film.title}</title>
+  <title>${info.film.title}</title>
 </head>
 <body>
 <h2>${info.film.title}</h2>
@@ -10,6 +10,8 @@
   <p><strong>Release year: </strong>${info.film.releaseYear}</p>
   <p><strong>Hall #</strong>${info.hall.serialNumber}</p>
   <p><strong>Seats available: </strong>${info.hall.seatsNumber}</p>
+  <br>
+  <p><a href="/films/${info.film.filmId}/chat">Open chat</a></p>
 </div>
 <div>
   <img src="data:image/png;base64, ${info.film.poster}" width="300" height="400">

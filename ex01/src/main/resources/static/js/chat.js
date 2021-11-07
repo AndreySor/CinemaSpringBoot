@@ -1,4 +1,8 @@
 'use strict';
+
+const token = $("meta[name='_csrf']").attr("content");
+const header = $("meta[name='_csrf_header']").attr("content");
+
 let usernamePage = document.querySelector('#username-page');
 let chatPage = document.querySelector('#chat-page');
 let usernameForm = document.querySelector('#usernameForm');
@@ -13,9 +17,13 @@ let colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+
+$(document).ajaxSend(function(e, xhr, options) {
+    xhr.setRequestHeader(header, token);
+})
+
 $(document).ready(function () {
     chatFilmId = $("#htmlFilmId").val();
-    console.log(chatFilmId);
     document.getElementById("formFilmId").value=(chatFilmId);
     username = getCookie("login");
     let socket = new SockJS('/ws');

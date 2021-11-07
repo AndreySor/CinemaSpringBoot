@@ -74,7 +74,7 @@ public class ChatController {
         return message;
     }
 
-    @PostMapping(value = "/images", consumes = "multipart/form-data")
+    @PostMapping(value = "/images", consumes = MediaType.ALL_VALUE)
     public String uploadAvatar(@ModelAttribute("avatar") MultipartFile avatar,
                                @ModelAttribute("filmId") Long filmId,
                                @ModelAttribute("userId") Long userId) throws IOException {

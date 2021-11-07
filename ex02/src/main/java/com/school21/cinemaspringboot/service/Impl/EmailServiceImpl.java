@@ -7,8 +7,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-
 @Service
 public class EmailServiceImpl implements EmailService {
 
@@ -24,7 +22,7 @@ public class EmailServiceImpl implements EmailService {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setFrom("chand312902@gmail.com");
+        mailMessage.setFrom("example@gmail.com");
         mailMessage.setText("To confirm your account, please click here : "
                 +"http://localhost:8080/confirm/"+token);
         emailSender.send(mailMessage);

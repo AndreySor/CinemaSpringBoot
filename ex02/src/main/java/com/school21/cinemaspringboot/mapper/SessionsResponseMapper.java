@@ -1,6 +1,5 @@
 package com.school21.cinemaspringboot.mapper;
 
-
 import com.school21.cinemaspringboot.model.Film;
 import com.school21.cinemaspringboot.model.Session;
 import com.school21.cinemaspringboot.model.response.FilmResponse;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-//ex01
 @Component
 public class SessionsResponseMapper {
 

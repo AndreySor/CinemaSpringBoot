@@ -21,8 +21,12 @@ import java.io.IOException;
 @Component
 public class RedirectPageFilter extends GenericFilterBean {
 
+    private Utils utils;
+
     @Autowired
-    Utils utils;
+    public void setUtils(Utils utils) {
+        this.utils = utils;
+    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

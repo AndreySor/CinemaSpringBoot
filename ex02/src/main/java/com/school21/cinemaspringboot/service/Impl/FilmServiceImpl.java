@@ -7,7 +7,6 @@ import com.school21.cinemaspringboot.model.SaveFilm;
 import com.school21.cinemaspringboot.repository.FilmRepository;
 import com.school21.cinemaspringboot.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

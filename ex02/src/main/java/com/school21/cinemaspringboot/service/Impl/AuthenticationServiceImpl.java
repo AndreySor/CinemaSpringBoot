@@ -1,7 +1,6 @@
 package com.school21.cinemaspringboot.service.Impl;
 
 import com.school21.cinemaspringboot.model.Authentication;
-import com.school21.cinemaspringboot.model.SecureToken;
 import com.school21.cinemaspringboot.model.User;
 import com.school21.cinemaspringboot.repository.AuthenticationRepository;
 import com.school21.cinemaspringboot.repository.UserRepository;

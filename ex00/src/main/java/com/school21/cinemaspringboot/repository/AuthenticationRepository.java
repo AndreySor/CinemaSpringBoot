@@ -1,6 +1,5 @@
 package com.school21.cinemaspringboot.repository;
 
-
 import com.school21.cinemaspringboot.model.Authentication;
 import org.springframework.data.jpa.repository.JpaRepository;
 

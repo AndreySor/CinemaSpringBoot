@@ -1,6 +1,5 @@
 package com.school21.cinemaspringboot.controller;
 
-
 import com.school21.cinemaspringboot.mapper.SessionsResponseMapper;
 import com.school21.cinemaspringboot.model.Session;
 import com.school21.cinemaspringboot.model.response.BaseResponse;
@@ -11,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-//функционал для ex01
 
 @Controller
 @RequestMapping(value = "/sessions")

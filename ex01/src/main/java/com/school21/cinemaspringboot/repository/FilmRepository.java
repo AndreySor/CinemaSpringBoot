@@ -1,6 +1,5 @@
 package com.school21.cinemaspringboot.repository;
 
-
 import com.school21.cinemaspringboot.model.Film;
 import org.springframework.data.jpa.repository.JpaRepository;
 

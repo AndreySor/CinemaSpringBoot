@@ -1,6 +1,7 @@
 package com.school21.cinemaspringboot.model;
 
 import com.school21.cinemaspringboot.validation.ValidPassword;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +12,7 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Data
 public class User {
 
     @Id
@@ -45,6 +45,9 @@ public class User {
     @Pattern(regexp = "(\\+7)(\\([0-9]{3}\\))[0-9]{7}", message = "{validation.phone}")
     @NotEmpty(message = "{validation.phoneEmp}")
     private String phone;
+
+    @Column(name = "avatar")
+    private String avatar;
 
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)

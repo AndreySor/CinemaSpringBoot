@@ -33,8 +33,10 @@ CREATE TABLE IF NOT EXISTS users
     phone VARCHAR(64) NOT NULL,
     login VARCHAR(64) UNIQUE NOT NULL,
     password TEXT NOT NULL,
+    avatar VARCHAR(64),
     user_role VARCHAR(64) NOT NULL,
-    is_confirmed BOOLEAN DEFAULT false
+    is_confirmed BOOLEAN DEFAULT false,
+    verification_code varchar(64) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS cinema_authentications
@@ -59,11 +61,4 @@ CREATE TABLE IF NOT EXISTS persistent_logins (
     series varchar(64) primary key,
     token varchar(64) not null,
     last_used timestamp not null
-);
-
-CREATE TABLE IF NOT EXISTS secure_tocken
-(
-    id bigserial PRIMARY KEY,
-    token varchar(64) UNIQUE NOT NULL,
-    user_id BIGSERIAL REFERENCES users (id)
 );

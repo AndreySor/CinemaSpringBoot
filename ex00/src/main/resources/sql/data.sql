@@ -1,3 +1,5 @@
+INSERT INTO users VALUES (default, 'admin', 'admin', 'admin@cinema.ru', '+7', 'admin', 'admin', null, 'ROLE_ADMIN');
+
 INSERT INTO cinema_halls VALUES (default, 1, 5);
 INSERT INTO cinema_halls VALUES (default, 2, 3);
 INSERT INTO cinema_halls VALUES (default, 3, 15);

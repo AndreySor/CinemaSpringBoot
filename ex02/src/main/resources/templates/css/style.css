@@ -281,3 +281,20 @@ html, body {
 .form-style-6 input[type="button"]:hover{
   background: #2EBC99;
 }
+
+.change-lang {
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.change-lang p {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-family: serif;
+  position: center;
+  top: 5px;
+}

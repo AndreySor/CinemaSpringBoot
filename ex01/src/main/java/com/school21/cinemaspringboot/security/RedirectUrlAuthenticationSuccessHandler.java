@@ -21,10 +21,13 @@ import java.util.Enumeration;
 @Component
 public class RedirectUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-    @Autowired
-    Utils utils;
-
+    private Utils utils;
     private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
+    @Autowired
+    public void setUtils(Utils utils) {
+        this.utils = utils;
+    }
 
     public RedirectUrlAuthenticationSuccessHandler() {
         super();

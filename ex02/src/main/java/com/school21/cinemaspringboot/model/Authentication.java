@@ -1,12 +1,14 @@
 package com.school21.cinemaspringboot.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "cinema_authentications")
+@Data
 public class Authentication {
 
     @Id
@@ -32,38 +34,6 @@ public class Authentication {
         this.id = id;
         this.user = user;
         this.date = date;
-        this.ipAddress = ipAddress;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 

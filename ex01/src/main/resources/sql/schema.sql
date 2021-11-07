@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS users
     phone VARCHAR(64) NOT NULL,
     login VARCHAR(64) UNIQUE NOT NULL,
     password TEXT NOT NULL,
+    avatar VARCHAR(64,)
     user_role VARCHAR(64) NOT NULL
 );
 

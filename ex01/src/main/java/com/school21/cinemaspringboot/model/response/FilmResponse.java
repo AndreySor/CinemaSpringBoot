@@ -1,30 +1,15 @@
 package com.school21.cinemaspringboot.model.response;
 
-//ex01
+import lombok.Data;
+
+@Data
 public class FilmResponse {
 
     private String name;
-
     private String posterUrl;
 
     public FilmResponse(String name, String posterUrl) {
         this.name = name;
-        this.posterUrl = posterUrl;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPosterUrl() {
-        return posterUrl;
-    }
-
-    public void setPosterUrl(String posterUrl) {
         this.posterUrl = posterUrl;
     }
 }

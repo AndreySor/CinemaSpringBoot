@@ -1,10 +1,13 @@
 package com.school21.cinemaspringboot.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "cinema_halls")
+@Data
 public class Hall {
 
     @Id
@@ -24,30 +27,6 @@ public class Hall {
     public Hall(Long hallId, Integer serialNumber, Integer seatsNumber) {
         this.hallId = hallId;
         this.serialNumber = serialNumber;
-        this.seatsNumber = seatsNumber;
-    }
-
-    public Long getHallId() {
-        return hallId;
-    }
-
-    public void setHallId(Long hallId) {
-        this.hallId = hallId;
-    }
-
-    public Integer getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(Integer serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public Integer getSeatsNumber() {
-        return seatsNumber;
-    }
-
-    public void setSeatsNumber(Integer seatsNumber) {
         this.seatsNumber = seatsNumber;
     }
 
